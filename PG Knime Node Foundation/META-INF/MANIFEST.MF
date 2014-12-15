@@ -9,5 +9,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.knime.workbench.core,
  org.knime.workbench.repository,
  org.knime.base
-Export-Package: com.pg.knime.node
+Export-Package: com.pg.knime.node,
+ com.pg.knime.node.configuration
 
