@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PG Knime Node Foundations for KNIME Workbench
+Bundle-SymbolicName: com.pg.knime.foundation;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-ClassPath: configuration.jar
+Bundle-Vendor: P&G
+Require-Bundle: org.eclipse.core.runtime,
+ org.knime.workbench.core,
+ org.knime.workbench.repository,
+ org.knime.base
+Export-Package: com.pg.knime.node
+
