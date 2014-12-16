@@ -38,4 +38,9 @@ public class DefaultVault {
 		return vault;
 		
 	}
+	
+	
+	public void initialize() throws Exception {
+		
+	}
 }
