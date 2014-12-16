@@ -20,7 +20,9 @@ public abstract class StandardNodeDialogPane extends NodeDialogPane {
 		JPanel pnl = new JPanel( new GridBagLayout() );
 		
 		for ( LabelComponentPair pair : pairs ) {
-			pnl.add(new JLabel(pair.getLabel()), getGBC(0, ypos++, 0, 0));
+			if ( !"".equals(pair.getLabel()) && pair.getLabel() != null )
+				pnl.add(new JLabel(pair.getLabel()), getGBC(0, ypos++, 0, 0));
+			
 			pnl.add(pair.getComponent(), getGBC(0, ypos++, 1, 0));
 		}
 		
