@@ -3,9 +3,16 @@
 <plugin>
    
 	 <extension point="org.knime.workbench.repository.categories">
+	 	
 	 	<!-- PG Custom Category -->
 	 	<category icon="icons/pg-knime-icon.png" level-id="pg" locked="true" name="PG" path="/">
 	 	</category>
+	 	
+	 	<!-- Database Category -->
+	 	<category icon="icons/database-icon.png" level-id="db" locked="true" name="Databases" path="/pg/">
+	 	</category>
+	 	
 	 </extension> 
+	 
 	   
 </plugin>
