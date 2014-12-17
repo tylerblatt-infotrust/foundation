@@ -7,6 +7,7 @@ import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -23,7 +24,11 @@ public abstract class StandardNodeDialogPane extends NodeDialogPane {
 			if (!"".equals(pair.getLabel()) && pair.getLabel() != null)
 				pnl.add(new JLabel(pair.getLabel()), getGBC(0, ypos++, 0, 0));
 			if (pair.getComponent()!=null )
-				pnl.add(pair.getComponent(), getGBC(0, ypos++, 1, 0));
+				pnl.add(pair.getComponent(), getGBC(0, ypos, 1, 0));
+			if ( pair.getButton() != null ) 
+				pnl.add(pair.getButton(), getGBC(1, ypos, 0, 0 ));
+			
+			ypos++;
 		}
 
 		// If any space at bottom
@@ -49,14 +54,21 @@ public abstract class StandardNodeDialogPane extends NodeDialogPane {
 
 	protected class LabelComponentPair {
 
-		private String label;
-		private Component component;
+		private String label = null;
+		private Component component = null;
+		private Component button = null;
 
 		public LabelComponentPair(String label, Component component) {
 			this.label = label;
 			this.component = component;
 		}
 
+		public LabelComponentPair(String label, Component component, Component button) {
+			this.label = label;
+			this.component = component;
+			this.button = button;
+		}		
+		
 		public String getLabel() {
 			return label;
 		}
@@ -72,6 +84,10 @@ public abstract class StandardNodeDialogPane extends NodeDialogPane {
 		public void setComponent(Component component) {
 			this.component = component;
 		}
+		
+		public Component getButton() {
+			return button;
+		}
 
 	}
 
@@ -82,8 +98,18 @@ public abstract class StandardNodeDialogPane extends NodeDialogPane {
 		public PanelBuilder() {
 		}
 
+		public PanelBuilder add(String label) {
+			items.add(new LabelComponentPair(label, null));
+			return this;
+		}
+		
 		public PanelBuilder add(String label, Component component) {
 			items.add(new LabelComponentPair(label, component));
+			return this;
+		}
+		
+		public PanelBuilder add(String label, Component component, JButton button) {
+			items.add(new LabelComponentPair(label, component, button));
 			return this;
 		}
 
