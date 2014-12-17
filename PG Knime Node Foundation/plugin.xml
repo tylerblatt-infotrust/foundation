@@ -8,6 +8,10 @@
 	 	<category icon="icons/pg-knime-icon.png" level-id="pg" locked="true" name="PG" path="/">
 	 	</category>
 	 	
+	 	<!-- PG Custom Category (Dev) -->
+	 	<category icon="icons/pg-knime-icon.png" level-id="pgdev" locked="true" name="PG-Dev" path="/">
+	 	</category>
+	 	
 	 	<!-- Database Category -->
 	 	<category icon="icons/database-icon.png" level-id="db" locked="true" name="Databases" path="/pg/">
 	 	</category>
