@@ -7,7 +7,6 @@ import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -108,7 +107,7 @@ public abstract class StandardNodeDialogPane extends NodeDialogPane {
 			return this;
 		}
 		
-		public PanelBuilder add(String label, Component component, JButton button) {
+		public PanelBuilder add(String label, Component component, Component button) {
 			items.add(new LabelComponentPair(label, component, button));
 			return this;
 		}
