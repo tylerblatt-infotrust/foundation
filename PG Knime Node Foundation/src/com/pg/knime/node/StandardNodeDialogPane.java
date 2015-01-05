@@ -19,19 +19,29 @@ public abstract class StandardNodeDialogPane extends NodeDialogPane {
 
 		JPanel pnl = new JPanel(new GridBagLayout());
 
+		boolean expandingUnit = false;
+		
 		for (LabelComponentPair pair : pairs) {
 			if (!"".equals(pair.getLabel()) && pair.getLabel() != null)
 				pnl.add(new JLabel(pair.getLabel()), getGBC(0, ypos++, 0, 0));
-			if (pair.getComponent()!=null )
-				pnl.add(pair.getComponent(), getGBC(0, ypos, 1, 0));
+			if (pair.getComponent()!=null ) {
+				int yweight = 0;
+				if ( pair.isExpanding() ) yweight=100;
+				pnl.add(pair.getComponent(), getGBC(0, ypos, 1, yweight));
+			
+			}
 			if ( pair.getButton() != null ) 
 				pnl.add(pair.getButton(), getGBC(1, ypos, 0, 0 ));
+			
+			expandingUnit = pair.isExpanding() || expandingUnit;
 			
 			ypos++;
 		}
 
+		
 		// If any space at bottom
-		pnl.add(new JPanel(), getGBC(0, ypos++, 1, 100));
+		if ( !expandingUnit )
+			pnl.add(new JPanel(), getGBC(0, ypos++, 1, 100));
 		
 		return pnl;
 	}
@@ -56,6 +66,7 @@ public abstract class StandardNodeDialogPane extends NodeDialogPane {
 		private String label = null;
 		private Component component = null;
 		private Component button = null;
+		private boolean expandY = false;
 
 		public LabelComponentPair(String label, Component component) {
 			this.label = label;
@@ -67,6 +78,14 @@ public abstract class StandardNodeDialogPane extends NodeDialogPane {
 			this.component = component;
 			this.button = button;
 		}		
+		
+		public LabelComponentPair(String label, Component component, Component button, boolean expanding) {
+			this.label = label;
+			this.component = component;
+			this.button = button;
+			this.expandY = expanding;
+		}
+		
 		
 		public String getLabel() {
 			return label;
@@ -86,6 +105,14 @@ public abstract class StandardNodeDialogPane extends NodeDialogPane {
 		
 		public Component getButton() {
 			return button;
+		}
+		
+		public void setExpanding( boolean xpand) {
+			this.expandY = xpand;
+		}
+		
+		public boolean isExpanding() {
+			return expandY;
 		}
 
 	}
@@ -111,7 +138,11 @@ public abstract class StandardNodeDialogPane extends NodeDialogPane {
 			items.add(new LabelComponentPair(label, component, button));
 			return this;
 		}
-
+		
+		public PanelBuilder add(LabelComponentPair pair) {
+			items.add(pair);
+			return this;
+		}
 		public LabelComponentPair[] build() {
 			return this.items.toArray(new LabelComponentPair[] {});
 		}
