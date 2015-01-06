@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: PG Knime Node Foundations for KNIME Workbench
 Bundle-SymbolicName: com.pg.knime.foundation;singleton:=true
-Bundle-Version: 1.0.3
+Bundle-Version: 1.0.4
 Bundle-ClassPath: pg-knime-foundation.jar
 Bundle-Vendor: Procter & Gamble
 Require-Bundle: org.eclipse.core.runtime,
