@@ -5,15 +5,15 @@
 	 <extension point="org.knime.workbench.repository.categories">
 	 	
 	 	<!-- PG Custom Category -->
-	 	<category icon="icons/pg-knime-icon.png" level-id="pg" locked="true" name="PG" path="/">
+	 	<category icon="icons/pg-knime-icon.png" level-id="pg" locked="false" name="PG" path="/">
 	 	</category>
 	 	
 	 	<!-- PG Custom Category (Dev) -->
-	 	<category icon="icons/pg-knime-icon.png" level-id="pgdev" locked="true" name="PG-Dev" path="/">
+	 	<category icon="icons/pg-knime-icon.png" level-id="pgdev" locked="false" name="PG-Dev" path="/">
 	 	</category>
 	 	
 	 	<!-- Database Category -->
-	 	<category icon="icons/database-icon.png" level-id="db" locked="true" name="Databases" path="/pg/">
+	 	<category icon="icons/database-icon.png" level-id="db" locked="false" name="Databases" path="/pg/">
 	 	</category>
 	 	
 	 </extension> 
