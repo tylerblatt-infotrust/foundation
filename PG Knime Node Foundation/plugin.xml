@@ -18,5 +18,10 @@
 	 	
 	 </extension> 
 	 
+	 
+	<extension point="org.knime.product.splashExtension">
+		<splashExtension icon="icons/pg-splash.png" id="Procter &amp; Gamble" tooltip="P&amp;G">
+      </splashExtension>
+	</extension>
 	   
 </plugin>
