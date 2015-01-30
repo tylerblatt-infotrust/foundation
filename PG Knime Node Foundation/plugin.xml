@@ -15,6 +15,10 @@
 	 	<!-- Database Category -->
 	 	<category icon="icons/database-icon.png" level-id="db" locked="false" name="Databases" path="/pg/">
 	 	</category>
+
+	 	<!-- Database Category -->
+	 	<category icon="icons/utils-icon.png" level-id="util" locked="false" name="Utilities" path="/pg/">
+	 	</category>
 	 	
 	 </extension> 
 	 
