@@ -27,11 +27,11 @@ public abstract class StandardNodeDialogPane extends NodeDialogPane {
 			if (pair.getComponent()!=null ) {
 				int yweight = 0;
 				if ( pair.isExpanding() ) yweight=100;
-				pnl.add(pair.getComponent(), getGBC(0, ypos, 1, yweight));
+				pnl.add(pair.getComponent(), getGBC(0, ypos, 2, yweight));
 			
 			}
 			if ( pair.getButton() != null ) 
-				pnl.add(pair.getButton(), getGBC(1, ypos, 0, 0 ));
+				pnl.add(pair.getButton(), getGBC(1, ypos, 1, 0 ));
 			
 			expandingUnit = pair.isExpanding() || expandingUnit;
 			
