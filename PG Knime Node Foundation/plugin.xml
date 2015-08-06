@@ -16,8 +16,12 @@
 	 	<category icon="icons/database-icon.png" level-id="db" locked="false" name="Databases" path="/pg/">
 	 	</category>
 
-	 	<!-- Database Category -->
+	 	<!-- Utils Category -->
 	 	<category icon="icons/utils-icon.png" level-id="util" locked="false" name="Utilities" path="/pg/">
+	 	</category>
+	 	
+	 	<!-- Meta Node Category -->
+	 	<category icon="icons/metanode-icon.png" level-id="meta" locked="false" name="Custom MetaNodes" path="/pg/">
 	 	</category>
 	 	
 	 </extension> 
