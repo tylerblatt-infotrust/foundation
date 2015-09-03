@@ -25,6 +25,10 @@ public class DefaultVault {
 		return StringUtils.join(values, ",");
 	}
 	
+	public String[] getArrayKey(String key) {
+		return getKey(key).split(",");
+	}
+	
 	public static DefaultVault getVault ( String vaultClass ) {
 		DefaultVault vault = new DefaultVault();
 		
@@ -43,4 +47,5 @@ public class DefaultVault {
 	public void initialize() throws Exception {
 		
 	}
+	
 }
