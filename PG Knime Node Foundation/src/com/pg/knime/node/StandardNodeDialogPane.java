@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.JLabel;
@@ -14,16 +15,86 @@ import org.knime.core.node.NodeDialogPane;
 
 public abstract class StandardNodeDialogPane extends NodeDialogPane {
 
-	protected JPanel buildStandardPanel(LabelComponentPair... pairs) {
+	
+	
+	protected PanelMapPair searchableStandardPanel(LabelComponentPair... pairs) {
 		int ypos = 0;
 
+		HashMap<String,Component> componentMap = new HashMap<String,Component>();
 		JPanel pnl = new JPanel(new GridBagLayout());
-
+	
 		boolean expandingUnit = false;
 		
 		for (LabelComponentPair pair : pairs) {
 			if (!"".equals(pair.getLabel()) && pair.getLabel() != null)
+			{	
+				JLabel label = new JLabel(pair.getLabel());
+				componentMap.put(pair.getLabel(), label);
+				pnl.add(label, getGBC(0, ypos++, 0, 0));
+			}
+			if (pair.getComponent()!=null ) {
+				int yweight = 0;
+				if ( pair.isExpanding() ) yweight=100;
+				pnl.add(pair.getComponent(), getGBC(0, ypos, 2, yweight));
+			}
+			if ( pair.getButton() != null ) 
+				pnl.add(pair.getButton(), getGBC(1, ypos, 1, 0 ));
+			
+			expandingUnit = pair.isExpanding() || expandingUnit;
+			
+			ypos++;
+		}
+
+		
+		// If any space at bottom
+		if ( !expandingUnit )
+			pnl.add(new JPanel(), getGBC(0, ypos++, 1, 100));
+		PanelMapPair pmp = new PanelMapPair(pnl, componentMap);
+		return pmp;
+	
+			
+	}
+
+	public class PanelMapPair{
+		
+		private HashMap<String,Component> componentMap;
+		private JPanel panel; 
+		
+		public PanelMapPair(JPanel panel, HashMap<String,Component> componentMap) {
+			this.panel = panel;
+			this.componentMap = componentMap; 
+		}
+
+		public HashMap<String, Component> getComponentMap() {
+			return componentMap;
+		}
+
+		public void setComponentMap(HashMap<String, Component> componentMap) {
+			this.componentMap = componentMap;
+		}
+
+		public JPanel getPanel() {
+			return panel;
+		}
+
+		public void setPanel(JPanel panel) {
+			this.panel = panel;
+		}
+	}
+	
+	
+	protected JPanel buildStandardPanel(LabelComponentPair... pairs) {
+		int ypos = 0;
+
+		JPanel pnl = new JPanel(new GridBagLayout());
+	
+		boolean expandingUnit = false;
+		
+		for (LabelComponentPair pair : pairs) {
+			if (!"".equals(pair.getLabel()) && pair.getLabel() != null)
+			{	
 				pnl.add(new JLabel(pair.getLabel()), getGBC(0, ypos++, 0, 0));
+			}
 			if (pair.getComponent()!=null ) {
 				int yweight = 0;
 				if ( pair.isExpanding() ) yweight=100;
@@ -44,8 +115,12 @@ public abstract class StandardNodeDialogPane extends NodeDialogPane {
 			pnl.add(new JPanel(), getGBC(0, ypos++, 1, 100));
 		
 		return pnl;
+	
+			
 	}
-
+	
+	
+	
 	protected static GridBagConstraints getGBC(int gridx, int gridy,
 			int weightx, int weighty) {
 		return new GridBagConstraints(gridx, // gridx
@@ -113,6 +188,10 @@ public abstract class StandardNodeDialogPane extends NodeDialogPane {
 		
 		public boolean isExpanding() {
 			return expandY;
+		}
+		
+		public void clearLabel(){
+			this.label = null; 
 		}
 
 	}
